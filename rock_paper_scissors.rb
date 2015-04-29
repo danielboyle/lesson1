@@ -1,6 +1,3 @@
-# Simple RPS Game
-# Daniel Boyle
-
 CHOICES = { "r" => "Rock", "p" => "Paper", "s" => "Scissors" }
 ties = 0
 player_wins = 0
@@ -17,12 +14,15 @@ def winning_message(winning_choice)
   end
 end
 
-# Game Intro
-puts "------- Welcome to Rock-Paper-Scissors -------\n
------------ Please enjoy the game! -----------"
+def display_game_intro
+  puts
+  puts "------- Welcome to Rock-Paper-Scissors -------"
+  puts "----------- Please enjoy the game! -----------"
+  puts
+end
 
+display_game_intro
 loop do
-  # Get picks from player and computer
   begin
     puts "Please choose: ( r, p, s )"
     player_pick = gets.chomp.downcase
@@ -30,17 +30,16 @@ loop do
     
   computer_pick = CHOICES.keys.sample
 
-  # Tie
   if player_pick == computer_pick
     puts "Computer picked #{CHOICES[computer_pick]} too. It's a tie."
     ties += 1
-  # Player wins
+
   elsif ( player_pick == 'r' && computer_pick == 's' ) || ( player_pick == 'p' && computer_pick == 'r' ) || ( player_pick == 's' && computer_pick == 'p' )
     puts "Computer picked #{CHOICES[computer_pick]}"
     winning_message(player_pick)
     puts "You win!!!"
     player_wins += 1
-  # Computer wins
+
   else
     puts "Computer picked #{CHOICES[computer_pick]}"
     winning_message(computer_pick)
@@ -51,5 +50,4 @@ loop do
   puts "Scoreboard // Player: #{player_wins} | Computer: #{computer_wins} | Ties: #{ties}"
   puts "Play again? (y/n)"
   break if gets.chomp.downcase != 'y'
-
 end
