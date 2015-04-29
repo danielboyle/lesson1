@@ -1,6 +1,3 @@
-# Tic Tac Toe Game
-# Daniel Boyle
-
 def intro
   puts
   puts "********** Welcome to Tic Tac Toe **********"
@@ -10,7 +7,7 @@ def intro
   puts "***** corresponds to the numbers on the ****"
   puts "************ board you see here ************"
   puts 
-  instruction_board
+  display_instruction_board
   puts
   puts "********* Are you ready to play ? **********"
   puts
@@ -22,7 +19,7 @@ def intro
   end 
 end
 
-def instruction_board
+def display_instruction_board
   puts "                 1 | 2 | 3 "
   puts "                ---+---+---"
   puts "                 4 | 5 | 6 "
@@ -90,14 +87,16 @@ loop do
     player_selects_square(board)
     draw_board(board)
     winner = check_winner(board)
+    break if winner
     computer_selects_square(board)
     draw_board(board)
     winner = check_winner(board)
+    break if winner
   end until winner || all_squares_filled?(board)
   if winner
     announce_winner(winner)
   else
-    puts "It's a tie"
+    puts "                It's a tie"
   end
   puts "Would you like to play again? (y/n)"
   break if gets.chomp != "y"
