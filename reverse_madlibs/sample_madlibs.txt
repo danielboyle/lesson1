@@ -1,0 +1,1 @@
+Once there was a NOUN named NAME. NAME had trouble with Ruby so NAME worked on a ADJECTIVE mad libs game. NAME had to VERB the program and it was ADJECTIVE and ADJECTIVE. Good thing NAME's friend, Chris, is a Ruby whiz.
