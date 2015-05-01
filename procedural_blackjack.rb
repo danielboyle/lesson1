@@ -10,13 +10,18 @@ def intro
   display_separator
   say "Welcome to Blackjack!"
   display_separator
+end
+
+def get_name
   say "Please enter your name."
   puts
   player_name = gets.chomp
+end
+
+def display_name(player_name)
   display_separator
   say "Ok, #{player_name}, let's play!"
   display_separator
-  return player_name
 end
 
 def shuffled_deck
@@ -62,10 +67,12 @@ def evaluate_hand(total)
     display_separator
     say "Blackjack!"
     display_separator
+    sleep 1.3
   when busted?(total)
     display_separator
     say "Busted!"
     display_separator
+    sleep 1.3
   end
 end
 
@@ -133,7 +140,7 @@ def dealer_turn(dealer_hand, dealer_total, deck)
   dealer_total
 end
 
-def who_wins?(final_player_total, final_dealer_total, player_name)
+def determine_winner(final_player_total, final_dealer_total, player_name)
   if final_player_total == final_dealer_total
     sleep 1.3
     system "clear"
@@ -198,7 +205,7 @@ def play_blackjack(player_name)
     if final_player_total <= 21
       final_dealer_total = dealer_turn(dealer_hand, dealer_total, deck)
       
-      who_wins?(final_player_total, final_dealer_total, player_name)
+      determine_winner(final_player_total, final_dealer_total, player_name)
     end
 
     say "Would you like to play another hand? (y/n)"
@@ -212,5 +219,7 @@ def play_blackjack(player_name)
   end 
 end
 
-player_name = intro
+intro
+player_name = get_name
+display_name(player_name)
 play_blackjack(player_name)
